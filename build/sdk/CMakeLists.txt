@@ -213,9 +213,3 @@ add_subdirectory(external)
 add_subdirectory(cmp_core)
 
 add_subdirectory(cmp_compressonatorlib)
-
-add_subdirectory(cmp_framework)
-
-add_subdirectory(directx)
-
-add_subdirectory(opencl)
