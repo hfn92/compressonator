@@ -41,6 +41,10 @@ file(GLOB_RECURSE CMP_SRCS
     ${COMPRESSONATOR_ROOT_PATH}/applications/_plugins/common/atiformats.h
     ${COMPRESSONATOR_ROOT_PATH}/applications/_plugins/common/format_conversion.h
     ${COMPRESSONATOR_ROOT_PATH}/applications/_plugins/common/format_conversion.cpp
+    ${COMPRESSONATOR_ROOT_PATH}/applications/_plugins/common/texture_utils.h
+    ${COMPRESSONATOR_ROOT_PATH}/applications/_plugins/common/texture_utils.cpp
+    ${COMPRESSONATOR_ROOT_PATH}/applications/_plugins/common/codec_commmon.h
+    ${COMPRESSONATOR_ROOT_PATH}/applications/_plugins/common/codec_common.cpp
 )
 
 if (OPTION_BUILD_ASTC)
