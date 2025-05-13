@@ -1,6 +1,6 @@
 # foreach(lib_type SHARED)
 
-    add_library(CMP_Core SHARED)
+    add_library(CMP_Core STATIC)
 
     target_sources(CMP_Core
                 PRIVATE
@@ -151,3 +151,6 @@ set_target_properties(CMP_Core_AVX512 PROPERTIES
 
 # Link SIMD libraries to CMP_Core
 target_link_libraries(CMP_Core PRIVATE CMP_Core_SSE CMP_Core_AVX CMP_Core_AVX512)
+
+
+install(TARGETS CMP_Core)

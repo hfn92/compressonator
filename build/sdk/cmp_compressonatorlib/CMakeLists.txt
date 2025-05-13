@@ -30,7 +30,7 @@ file(GLOB_RECURSE CMP_SRCS
     ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/gt/*.h
     ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/gt/*.cpp
 
-    # Common 
+    # Common
     ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/common/*.h
     ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/common/*.cpp
     ${COMPRESSONATOR_ROOT_PATH}/cmp_framework/common/*.h
@@ -48,25 +48,25 @@ file(GLOB_RECURSE CMP_SRCS
 )
 
 if (OPTION_BUILD_ASTC)
-    file(GLOB_RECURSE CMP_ASTC_SRCS
+  file(GLOB_RECURSE CMP_ASTC_SRCS
         ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/astc/*.h
         ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/astc/*.cpp
         ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/astc/arm/*.h
         ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/astc/arm/*.cpp
         )
-    list(APPEND CMP_SRCS ${CMP_ASTC_SRCS})
+  list(APPEND CMP_SRCS ${CMP_ASTC_SRCS})
 endif()
 
 if (OPTION_BUILD_BROTLIG)
-    file(GLOB_RECURSE CMP_BRLG_SRCS
+  file(GLOB_RECURSE CMP_BRLG_SRCS
         ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/brotlig/*.h
         ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/brotlig/*.cpp
     )
-    list(APPEND CMP_SRCS ${CMP_BRLG_SRCS})
+  list(APPEND CMP_SRCS ${CMP_BRLG_SRCS})
 endif()
 
-add_library(CMP_Compressonator 
-            SHARED  
+add_library(CMP_Compressonator
+            STATIC
             ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/version.h
             ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/common.h
             ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/compress.cpp
@@ -74,6 +74,10 @@ add_library(CMP_Compressonator
             ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/compressonator.cpp
             ${CMP_SRCS}
             )
+
+install(TARGETS CMP_Compressonator)
+install(FILES ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/compressonator.h
+        DESTINATION include/compressonator)
 
 target_include_directories(CMP_Compressonator
                            PRIVATE
@@ -100,14 +104,14 @@ target_include_directories(CMP_Compressonator
                            ${COMPRESSONATOR_ROOT_PATH}/applications/_plugins/common
                            )
 
-set_target_properties(CMP_Compressonator PROPERTIES 
+set_target_properties(CMP_Compressonator PROPERTIES
     FOLDER ${PROJECT_FOLDER_SDK_LIBS}
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
 if (OPTION_BUILD_ASTC)
-    target_include_directories(CMP_Compressonator
+  target_include_directories(CMP_Compressonator
         PRIVATE
         ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/astc
         ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/astc/arm/
@@ -115,10 +119,10 @@ if (OPTION_BUILD_ASTC)
 endif()
 
 if (OPTION_BUILD_BROTLIG)
-    target_include_directories(CMP_Compressonator PRIVATE ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/brotlig)
+  target_include_directories(CMP_Compressonator PRIVATE ${COMPRESSONATOR_ROOT_PATH}/cmp_compressonatorlib/brotlig)
 
-    # should there be an error if OPTION_CMP_DIRECTX isn't ON?
-    target_link_libraries(CMP_Compressonator PRIVATE
+  # should there be an error if OPTION_CMP_DIRECTX isn't ON?
+  target_link_libraries(CMP_Compressonator PRIVATE
         ExtBrotlig
         dxcompiler.lib
         dxgi.lib
