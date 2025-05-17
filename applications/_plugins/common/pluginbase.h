@@ -30,6 +30,7 @@
 #define _PLUGINBASE_H
 
 #include <memory>
+#include <stdint.h>
 
 #ifdef _WIN32
 #include <windows.h>

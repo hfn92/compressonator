@@ -34,7 +34,7 @@ target_sources(CMP_Core
 )
 
 if (OPTION_CMP_GTC)
-    target_sources(
+  target_sources(
         CMP_Core
         PRIVATE
         shaders/gtc_encode_kernel.h
@@ -43,7 +43,7 @@ if (OPTION_CMP_GTC)
 endif()
 
 if (OPTION_BUILD_BROTLIG)
-    target_sources(
+  target_sources(
         CMP_Core
         PRIVATE
         shaders/brlg_encode_kernel.h
@@ -59,7 +59,7 @@ target_include_directories(CMP_Core
 )
 
 if (UNIX)
-    target_compile_definitions(CMP_Core PRIVATE _LINUX ASPM_GPU)
+  target_compile_definitions(CMP_Core PRIVATE _LINUX ASPM_GPU)
 endif()
 
 set_target_properties(CMP_Core PROPERTIES FOLDER ${PROJECT_FOLDER_SDK_LIBS})
@@ -72,7 +72,7 @@ target_sources(CMP_Core_SSE PRIVATE source/core_simd_sse.cpp)
 target_include_directories(CMP_Core_SSE PRIVATE source shaders)
 
 if (UNIX)
-    target_compile_options(CMP_Core_SSE PRIVATE -march=nehalem)
+  target_compile_options(CMP_Core_SSE PRIVATE -march=nehalem)
 endif()
 
 set_target_properties(CMP_Core_SSE PROPERTIES FOLDER ${PROJECT_FOLDER_SDK_LIBS})
@@ -83,9 +83,9 @@ target_sources(CMP_Core_AVX PRIVATE source/core_simd_avx.cpp)
 target_include_directories(CMP_Core_AVX PRIVATE source shaders)
 
 if (WIN32)
-    target_compile_options(CMP_Core_AVX PRIVATE /arch:AVX2)
+  target_compile_options(CMP_Core_AVX PRIVATE /arch:AVX2)
 else()
-    target_compile_options(CMP_Core_AVX PRIVATE -march=haswell)
+  target_compile_options(CMP_Core_AVX PRIVATE -march=haswell)
 endif()
 
 set_target_properties(CMP_Core_AVX PROPERTIES FOLDER ${PROJECT_FOLDER_SDK_LIBS})
@@ -96,9 +96,9 @@ target_sources(CMP_Core_AVX512 PRIVATE source/core_simd_avx512.cpp)
 target_include_directories(CMP_Core_AVX512 PRIVATE source shaders)
 
 if (WIN32)
-    target_compile_options(CMP_Core_AVX512 PRIVATE /arch:AVX-512)
+  target_compile_options(CMP_Core_AVX512 PRIVATE /arch:AVX-512)
 else()
-    target_compile_options(CMP_Core_AVX512 PRIVATE -march=knl)
+  target_compile_options(CMP_Core_AVX512 PRIVATE -march=skylake-avx512)
 endif()
 
 set_target_properties(CMP_Core_AVX512 PROPERTIES FOLDER ${PROJECT_FOLDER_SDK_LIBS})
