@@ -146,3 +146,6 @@ set_target_properties(CMP_Framework PROPERTIES
 )
 
 target_link_libraries(CMP_Framework PRIVATE CMP_Core)
+
+
+install(TARGETS CMP_Framework)

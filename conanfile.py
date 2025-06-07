@@ -47,7 +47,7 @@ class CompressonatorConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         cmake.configure(build_script_folder=os.path.join(self.source_folder, "compressonator/build/sdk"))
-        cmake.build(target="CMP_Compressonator")
+        cmake.build(target="all")
 
     def package(self):
         cmake = CMake(self)
