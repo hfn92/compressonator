@@ -1,4 +1,4 @@
-add_library(CMP_Framework SHARED)
+add_library(CMP_Framework STATIC)
 
 if(CMP_HOST_WINDOWS)
     target_compile_definitions(CMP_Framework PUBLIC
